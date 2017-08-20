@@ -5,3 +5,5 @@ source ~/.bashrc
 sudo apt-get install python-rosinstall -y
 rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
 catkin_make 
+echo "source ~/crazyflie_ws/devel/setup.bash"
+source ~/.bashrc
