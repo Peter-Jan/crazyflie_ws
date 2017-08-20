@@ -1,7 +1,3 @@
-sudo rosdep init
-rosdep update 
-echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
-source ~/.bashrc
 sudo apt-get install python-rosinstall -y
 rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
 catkin_make 
@@ -15,3 +11,6 @@ sudo git fetch
 sudo git checkout origin/master
 sudo dkms remove -m xpad -v 0.4 --all
 sudo dkms install -m xpad -v 0.4
+sudo cp optirx.py /home/$USER/.local/lib/python3.4/
+sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
+sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
