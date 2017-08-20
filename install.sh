@@ -8,5 +8,5 @@ rosdep update -y
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 sudo apt-get install python-rosinstall
-cd ~/crazyflie_ws
-catkin_make
+rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
+catkin_make 
