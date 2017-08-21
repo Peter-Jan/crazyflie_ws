@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11    CMakeFiles/listParams.dir/src/listParams.cpp.o  -o /home/peter/crazyflie_ws/devel/lib/crazyflie_tools/listParams -rdynamic /home/peter/crazyflie_ws/devel/lib/libcrazyflie_cpp.so -lboost_program_options -lusb-1.0 -Wl,-rpath,/home/peter/crazyflie_ws/devel/lib 

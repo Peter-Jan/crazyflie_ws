@@ -1,8 +1,0 @@
-prefix=/home/peter/crazyflie_ws/install
-
-Name: crazyflie_driver
-Description: Description of crazyflie_driver
-Version: 0.0.1
-Cflags: -I/home/peter/crazyflie_ws/install/include
-Libs: -L/home/peter/crazyflie_ws/install/lib 
-Requires: message_runtime std_msgs tf crazyflie_cpp
