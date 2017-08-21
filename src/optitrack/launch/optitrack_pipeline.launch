@@ -13,6 +13,6 @@
   </node>
   
   <!-- RVIZ -->
-<!--   <node name="rviz_node" pkg="rviz" type="rviz" args="-d $(find optitrack)/config/optitrack.rviz" /> -->
+<!--   -->
   
 </launch>
