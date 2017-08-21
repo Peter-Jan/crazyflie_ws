@@ -9,7 +9,9 @@ echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 sudo apt-get install python-rosinstall -y
 rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
+echo "*************************************************************"
 catkin_make 
+echo "*************************************************************"
 echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
 sudo apt-get install dkms
@@ -24,3 +26,4 @@ cd ~/crazyflie_ws
 sudo cp optirx.py /home/$USER/.local/lib/python3.4/
 sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
 sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
+kill $PPID
