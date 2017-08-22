@@ -16,8 +16,6 @@
 
   <!-- <can make arguments to  sub into param below or simply replace $(xxx) with topic> -->
   <arg name="log_topic" default="stabilizer" />
-  <arg name="log_topic1" default="tester" />
-
 
   <node pkg="crazyflie_driver" type="crazyflie_add" name="crazyflie_add" output="screen">
     <param name="uri" value="$(arg uri)" />
@@ -34,10 +32,9 @@
 
 
     <!-- <The topics below must be separated by commas> -->
-    <rosparam param="genericLogTopics"> [stabilizer,tester] </rosparam>
-    <rosparam param="genericLogTopicFrequencies"> [10,10] </rosparam>
+    <rosparam param="genericLogTopics"> [stabilizer] </rosparam>
+    <rosparam param="genericLogTopicFrequencies"> [10] </rosparam>
     <rosparam param="genericLogTopic_$(arg log_topic)_Variables">[stabilizer.roll,stabilizer.pitch,stabilizer.yaw]</rosparam>
-    <rosparam param="genericLogTopic_$(arg log_topic1)_Variables">[tester.myTick]</rosparam>
 
   </node>
 </launch>
