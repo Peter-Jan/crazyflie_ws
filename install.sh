@@ -22,4 +22,5 @@ cd ~/crazyflie_ws
 sudo cp optirx.py /home/$USER/.local/lib/python3.4/
 sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
 sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
-kill $PPID
+echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
+echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
