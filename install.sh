@@ -25,3 +25,6 @@ sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
 echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
 source ~/.bashrc
+sudo add-apt-repository ppa:webupd8team/sublime-text-2
+sudo apt-get update
+sudo apt-get install sublime-text
