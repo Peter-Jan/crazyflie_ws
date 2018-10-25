@@ -1,22 +1,22 @@
-Setting up Linux
+Setting up Environment for Crazyflie Project
 -author: Wooshik Kim, TA for ACSI
 -last edit: 10/24/2018 
-In this README, we will go through process provided by Peter Jan, who set up 
-crazyflie with optitrack motion capture system. 
+In this README, we will set up environment for crazyflie
+with optitrack motion capture system. 
 
-We are going to use Ubuntu 14.04 with ROS Indigo 
-Why? 
-Ubuntu 14.04 is compatible with ROS Indigo,
-and we need ROS Indigo since it is compatible with Optitrack code
-we are using from Koushil's lab. (side note: virtual machine provided from Crazyflie uses Ubuntu 14.04)
+There are two ways of setting up.
+You can either use Ubuntu 14.04 with ROS Indigo 
+or use Ubuntu 16.04 with ROS Kinetic
+The lab computer in Motion Capture room is set
+up with Ubuntu 16.04 with ROS Kinetic
 
 Now let's get what we need
 
-1) Download Ubuntu 14.04 
+1) Install Ubuntu 14.04 
 https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4 
+or Install Ubuntu 16.04
 
-
-2) Setup environment in Ubuntu 14.04
+2) Setup environment in Ubuntu 14.04 or 16.04
 	2-1) OPTIONAL:
 	For me, when I was trying to sudo apt-get install I got shim(= 13-0ubuntu2) error. 
 	To solve this I went through the following
@@ -30,16 +30,17 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	https://askubuntu.com/questions/1076247/after-clean-install-of-ubuntu-14-04-i-get-shim-signed-error 
 
 	2-2) Clone Peter's repo
-	Peter Jan was previous TA for ACSI course. He went through 
-	the process of integrating crazyflie, optitrack, and some controllers
+	Peter Jan was previous TA for ACSI course. There are crazyflie
+	firmware, Optitrack python code, along with other things
 
 	git clone https://github.com/Peter-Jan/crazyflie_ws.git
 
 	From this point on we are going through install.sh
 	You can simply do cd crazyflie_ws  chmod +x install.sh  ./install.sh
-	However since some lines are out of date I will provide step by step guide
+	However since some are out of date I will provide step by step guide below
 
-	2-3) Install ROS Indigo, update rosdep, and source bash to use from terminal
+	2-3) Install ROS, update rosdep, source bash to use from terminal, and make crazyflie_ws
+	Indigo
 	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
 	sudo apt-get update
@@ -72,6 +73,8 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	source ~/crazyflie_ws/devel/setup.bash
 	sudo apt-get install dkms
 
+	http://wiki.ros.org/kinetic/Installation/Ubuntu
+
 	2-4) Driver for Linux xpad controllercd crazyflie_ws 
 
 	cd ..
@@ -85,21 +88,20 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 	https://github.com/paroj/xpad
 	
-	//Following sets udev permissions on Linux to use 
-	//USB radio without being root
+	Following sets udev permissions on Linux to use 
+	USB radio without being root
 	
 	cd ~
-	//sudo groupadd plugdev
-	//sudo usermod -a -G plugdev <username>
+	sudo groupadd plugdev
 
 	Create a file named /etc/udev/rules.d/99-crazyradio.rules and add the following:
+	Allows you to connect Crazyflie 2.0 via usb, 
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
-	To connect Crazyflie 2.0 via usb, create a file name /etc/udev/rules.d/99-crazyflie.rules and add the following:
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0664", GROUP="plugdev"
 
 	https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
 
-	2-5) Setup Optitrack your python might be located somewhere else change it correct dir
+	2-5) Optitrack library from optirx, python based ROS examples are here
 	cd ~/crazyflie_ws
 	sudo cp optirx.py /usr/lib/python3.4/  
 	sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
@@ -125,6 +127,10 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	sudo apt-get install sublime-text
 
 	http://tipsonubuntu.com/2017/05/30/install-sublime-text-3-ubuntu-16-04-official-way/
+
+	Make Sublime default text editor
+	subl /usr/share/applications/defaults.list
+	then change all gedit with sublime_text
 
 
 3) "Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
