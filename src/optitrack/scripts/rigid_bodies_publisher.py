@@ -48,7 +48,7 @@ class RigidBodiesPublisher(object):
     # optitrack = rx.mkdatasock(ip_address=iface)
     optitrack = rx.mkcmdsock(ip_address=iface)
     msg = struct.pack("I", rx.NAT_PING)
-    server_address = '192.168.1.205'
+    server_address = '10.0.0.1' #'192.168.1.205'
     result = optitrack.sendto(msg, (server_address, rx.PORT_COMMAND))
 
 
@@ -119,9 +119,9 @@ class RigidBodiesPublisher(object):
         logFile = open("optitrack_position","a")
         strX = str(array_msg.bodies[0].pose.position.x).decode('utf-8')
         strX = strX[2:-2]
-        strY = str(array_msg.bodies[0].pose.position.x).decode('utf-8')
+        strY = str(array_msg.bodies[0].pose.position.y).decode('utf-8')
         strY = strX[2:-2]
-        strZ = str(array_msg.bodies[0].pose.position.x).decode('utf-8')
+        strZ = str(array_msg.bodies[0].pose.position.z).decode('utf-8')
         strZ = strX[2:-2]
         logFile.write(strX)
         logFile.write(", ")

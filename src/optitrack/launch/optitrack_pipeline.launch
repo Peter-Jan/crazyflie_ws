@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   
-  <arg name="iface" default="192.168.1.165"/>
+  <arg name="iface" default="10.0.0.1"/>
   
   <!-- Define the transformation between optitrack and the world -->
   <node name="world_tf_publisher" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 1.570796 world optitrack 10" />
