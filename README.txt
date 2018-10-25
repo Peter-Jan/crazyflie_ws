@@ -54,10 +54,26 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	source ~/crazyflie_ws/devel/setup.bash
 	sudo apt-get install dkms
 
+	Kinetic
+	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+	sudo apt-get update
+	sudo apt-get install ros-indigo-desktop-full
+	sudo rosdep init
+	rosdep update
+	source /opt/ros/indigo/setup.bash
+	sudo apt-get install python-rosinstall
+	cd crazyflie_ws
+	rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
+	catkin_make
+	source ~/crazyflie_ws/devel/setup.bash
+	sudo apt-get install dkms
+
 	http://wiki.ros.org/indigo/Installation/Ubuntu
 
 	2-4) Driver for Linux xpad controllercd crazyflie_ws 
 
+	cd ..
 	sudo git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
 	sudo dkms install -m xpad -v 0.4
 	cd /usr/src/xpad-0.4
@@ -68,11 +84,12 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 	https://github.com/paroj/xpad
 	
-	//Following sets udev permissions on Linux to use 
-	//USB radio without being root
+	Following sets udev permissions on Linux to use 
+	USB radio without being root
 
-	//sudo groupadd plugdev
-	//sudo usermod -a -G plugdev <username>
+	cd ~
+	sudo groupadd plugdev
+	sudo usermod -a -G plugdev <username>
 
 	Create a file named /etc/udev/rules.d/99-crazyradio.rules and add the following:
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
@@ -90,6 +107,8 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
 	source ~/.bashrc
 
+	if bashrc contains ros/indigo, erase it
+
 	2-6) Get Sumblime text if you haven't done so already
 	Sublime text is a great text editor for C, C++, python, ... everything
 	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
@@ -101,7 +120,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 
 3) "Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
-Connect Crazyradio PA to your computer and open terminal. 
+Connect Crazyradio PA to your computer, turn on Crazyflie, and open terminal. 
 
 cd crazyflie_ws
 roscore
