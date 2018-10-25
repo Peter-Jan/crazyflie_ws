@@ -17,7 +17,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 
 2) Setup environment in Ubuntu 14.04
-	2-1) Solving some issues 
+	2-1) OPTIONAL:
 	For me, when I was trying to sudo apt-get install I got shim(= 13-0ubuntu2) error. 
 	To solve this I went through the following
 
@@ -48,7 +48,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 	rosdep update
 	source /opt/ros/indigo/setup.bash
 	sudo apt-get install python-rosinstall
-	cd crazyflie_ws  #
+	cd crazyflie_ws
 	rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
 	catkin_make
 	source ~/crazyflie_ws/devel/setup.bash
@@ -56,7 +56,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 	http://wiki.ros.org/indigo/Installation/Ubuntu
 
-	2-4) Driver for Linux xpad controllercd crazyflie_ws  #
+	2-4) Driver for Linux xpad controllercd crazyflie_ws 
 
 	sudo git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
 	sudo dkms install -m xpad -v 0.4
@@ -68,11 +68,11 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 	https://github.com/paroj/xpad
 	
-	Following sets udev permissions on Linux to use 
-	USB radio without being root
+	//Following sets udev permissions on Linux to use 
+	//USB radio without being root
 
-	sudo groupadd plugdev
-	sudo usermod -a -G plugdev <username>
+	//sudo groupadd plugdev
+	//sudo usermod -a -G plugdev <username>
 
 	Create a file named /etc/udev/rules.d/99-crazyradio.rules and add the following:
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
@@ -83,7 +83,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4
 
 	2-5) Setup Optitrack your python might be located somewhere else change it correct dir
 	cd ~/crazyflie_ws
-	sudo cp optirx.py /usr/lib/python3.4/  # 
+	sudo cp optirx.py /usr/lib/python3.4/  
 	sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
 	sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
 	echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
