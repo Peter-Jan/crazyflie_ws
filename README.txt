@@ -148,3 +148,31 @@ roslaunch crazyflie_demo teleop_xbox360.launch
 and you should be flying your drone! 
 
 Section 3 of droneWriteUp.pdf 
+
+
+4) Connecting with Optitrack
+Turn on Motive on Optitrack computer and open one of the recent calibration 
+file in ACSI folder. Set your Crazyflie as rigid body. That rigid body 
+data will be sent to your computer. 
+
+To connect your computer to Optitrack computer both should be connected 
+via switch port on the top of the shelf. Connect and set the IP address of
+your main Ubuntu computer to (you can right click wifi icon on top right)
+10.0.0.1 
+The Optitrack computer IP address is set to 
+10.0.0.2
+You can check if the two are connected by pinging each other's address.
+Now from Motive you will set it to send rigid body data to your computer.
+Open Data Streaming -> check Broadcast Frame Data, and from Advanced Network 
+Options -> Multicast Interface to 10.0.0.1
+
+Now start ros node for reading Optitrack data with
+roslaunch optitrack optitrack_pipeline.launch
+
+After you close process, the data will be saved in 
+Home/.ros/
+optitrack_position and optitrack_orientation
+
+
+5) Now you are all set!
+Have fun with your project! 
