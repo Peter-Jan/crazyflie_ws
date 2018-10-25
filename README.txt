@@ -162,8 +162,9 @@ file in ACSI folder. Set your Crazyflie as rigid body. That rigid body
 data will be sent to your computer. 
 
 To connect your computer to Optitrack computer both should be connected 
-via switch port on the top of the shelf. Connect and set the IP address of
-your main Ubuntu computer to (you can right click wifi icon on top right)
+via switch port on the top of the shelf. Change connection (right top) 
+to "acsi_ros", I already changed the the IP address. On other computers
+Connect and set the IP address of your main Ubuntu computer to 
 10.0.0.1 
 The Optitrack computer IP address is set to 
 10.0.0.2
