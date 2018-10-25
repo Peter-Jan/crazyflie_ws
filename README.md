@@ -136,7 +136,6 @@ ROS setup instructions:
 	source ~/.bashrc
 	```
 
-
 ### Test the environment
 
 "Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
