@@ -21,8 +21,8 @@ ROS setup instructions:
 
 ## Setup Instructions
 
-1) Setup environment in Ubuntu 14.04 or 16.04
-	1-1) OPTIONAL:
+### Setup environment in Ubuntu 14.04 or 16.04
+1) OPTIONAL:
 	
 	For me, when I was trying to `sudo apt-get install` I got the error `shim(= 13-0ubuntu2)`. 
 	
@@ -36,7 +36,7 @@ ROS setup instructions:
 	```
 	Reference: https://askubuntu.com/questions/1076247/after-clean-install-of-ubuntu-14-04-i-get-shim-signed-error 
 
-	1-2) Clone Peter's repo
+2) Clone Peter's repo
 	
 	Peter Jan was previously a TA for the ACSI course. The repository contains Crazyflie
 	firmware, Optitrack python code, along with other things
@@ -48,7 +48,7 @@ ROS setup instructions:
 	You can simply do cd crazyflie_ws `chmod +x install.sh  ./install.sh`
 	However since some are out of date I will provide a step by step guide below
 
-	1-3) Install ROS, update rosdep, source bash to use from terminal, and make crazyflie_ws
+3) Install ROS, update rosdep, source bash to use from terminal, and make crazyflie_ws
 	
 	Indigo
 	```
@@ -86,7 +86,7 @@ ROS setup instructions:
 	```
 	http://wiki.ros.org/kinetic/Installation/Ubuntu
 
-	1-4) Driver for Linux xpad controllercd crazyflie_ws 
+4) Driver for Linux xpad controllercd crazyflie_ws 
 	```
 	cd ..
 	sudo git clone https://github.com/paroj/xpad.git /usr/src/xpad-0.4
@@ -112,7 +112,7 @@ ROS setup instructions:
 	```
 	Reference: https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
 
-	1-5) Optitrack library from optirx, python based ROS examples are here
+5) Optitrack library from optirx, python based ROS examples are here
 	
 	Indigo
 	```
@@ -136,70 +136,57 @@ ROS setup instructions:
 	source ~/.bashrc
 	```
 
-	1-6) Get Sumblime text if you haven't done so already
-	Sublime text is a great text editor for C, C++, python, ... everything
-	```
-	wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
-	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
-	sudo apt-get update
-	sudo apt-get install sublime-text
-	```
-	Reference: http://tipsonubuntu.com/2017/05/30/install-sublime-text-3-ubuntu-16-04-official-way/
 
-	Make Sublime default text editor
-	```
-	subl /usr/share/applications/defaults.list
-	```
-	then change all gedit with sublime_text
+### Test the environment
 
-
-2) "Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
+"Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
 Connect Crazyradio PA to your computer and open terminal. 
-
+```
 cd crazyflie_ws
 roscore
+```
 
 The command "roscore" starts ros system. Now open a new terminal and run
-
+```
 rosrun crazyflie_tools scan
+```
 
 This will print the uri address for the crazyflie onto console (the ID of crazyflie you are flying)
+
 The ID will be something like radio://0/20/2M
-Copy this address into the launch file for teleoperation located at 
-(/path_to_your_workspace/src/crazyflie_ros/crazyflie_demo/launch/teleop_xbox360.launch)
+
+Copy this address into the launch file for teleoperation located at `/path_to_your_workspace/src/crazyflie_ros/crazyflie_demo/launch/teleop_xbox360.launch`
+
 Now run 
-
+```
 roslaunch crazyflie_demo teleop_xbox360.launch
+```
+and you should be able to fly your drone! 
 
-and you should be flying your drone! 
-
-Section 3 of droneWriteUp.pdf 
-
-
-3) Connecting with Optitrack
-Turn on Motive on Optitrack computer and open one of the recent calibration 
-file in ACSI folder. Set your Crazyflie as rigid body. That rigid body 
-data will be sent to your computer. 
-
-To connect your computer to Optitrack computer both should be connected 
-via switch port on the top of the shelf. Change connection (right top) 
-to "acsi_ros", I already changed the the IP address. On other computers
-Connect and set the IP address of your main Ubuntu computer to 
-10.0.0.1 
-The Optitrack computer IP address is set to 
-10.0.0.2
-You can check if the two are connected by pinging each other's address.
-Now from Motive you will set it to send rigid body data to your computer.
-Open Data Streaming -> check Broadcast Frame Data, and from Advanced Network 
-Options -> Multicast Interface to 10.0.0.1
-
-Now start ros node for reading Optitrack data with
-roslaunch optitrack optitrack_pipeline.launch
-
-After you close process, the data will be saved in 
-Home/.ros/
-optitrack_position and optitrack_orientation
+Reference: Section 3 of droneWriteUp.pdf 
 
 
-4) Now you are all set!
+### Connecting with Optitrack
+
+1) Turn on Motive on Optitrack computer and open one of the recent calibration 
+file in ACSI folder. 
+
+2) Set your Crazyflie as a rigid body. The pose data of that rigid body will be sent to your computer. 
+
+3) To connect your computer to Optitrack computer both should be connected via the switch port on the top of the shelf. 
+
+4) Change connection (right top) to "acsi_ros", I already changed the the IP address. On other computers, connect and set the IP address of your main Ubuntu computer to `10.0.0.1 `
+
+The Optitrack computer IP address is set to `10.0.0.2`. You can check if the two are connected by pinging each other's address.
+
+5) Configure Motive to send rigid body data to your computer:
+- Data Streaming -> check Broadcast Frame Data
+- Advanced Network Options -> Multicast Interface to 10.0.0.1
+
+6) Now start ros node for reading Optitrack data with `roslaunch optitrack optitrack_pipeline.launch`
+
+After you terminate the process, the data will be saved in `home/.ros/optitrack_position` and `home/.ros/optitrack_orientation`
+
+
+Now you are all set!
 Have fun with your project! 
