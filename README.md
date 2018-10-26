@@ -2,7 +2,15 @@
 
 Author: Wooshik Kim & Austin Wang, TA for ACSI
 
-Last edited: 10/24/2018 
+Last edited: 10/26/2018 
+
+## Note to ACSI 2018 Students!!
+
+I already set up the lab computer for instructor user! So you can try "Test the Environment" and
+"Connecting with Optitrack" right away. Skip "Setup Instructions" 
+That computer is there to serve as a reference. It is not answer to everything. It still lacks many things.
+It just provides the bare minimum of this project. So try to go through the steps on your own
+Ubuntu machine and see what you can do. 
 
 ## Synopsis
 
@@ -10,31 +18,23 @@ ROS environment capable of interfacing with Crazyflie 2.0 and OptiTrack motion c
 
 ### Requirements
 
-Ubuntu 14.04 with ROS Indigo or Ubuntu 16.04 with ROS Kinetic (lab computer uses latter)
+You will go through the following in Setup Instructions
+
+Ubuntu 16.04 with ROS Kinetic 
 
 Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4 
 
 ROS setup instructions: 
 
 - Kinetic: http://wiki.ros.org/indigo/Installation/Ubuntu
-- Indigo: http://wiki.ros.org/kinetic/Installation/Ubuntu
 
 ## Setup Instructions
 
 ### Setup environment in Ubuntu 14.04 or 16.04
-1) OPTIONAL:
+
+1) Install Ubuntu 16.04
 	
-	For me, when I was trying to `sudo apt-get install` I got the error `shim(= 13-0ubuntu2)`. 
-	
-	To solve this I went through the following:
-	```
-	sudo apt-get download dpkg
-	sudo dpkg -i dpkg_1.17.5ubuntu5.8_amd64.deb
-	sudo apt-get update && sudo apt-get upgrade
-	sudo apt-get -f install
-	sudo apt-get update && sudo apt-get upgrade
-	```
-	Reference: https://askubuntu.com/questions/1076247/after-clean-install-of-ubuntu-14-04-i-get-shim-signed-error 
+	https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#0 
 
 2) Clone Peter's repo
 	
@@ -50,7 +50,7 @@ ROS setup instructions:
 
 3) Install ROS, update rosdep, source bash to use from terminal, and make crazyflie_ws
 	
-	Indigo
+<!-- 	Indigo
 	```
 	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
@@ -66,7 +66,7 @@ ROS setup instructions:
 	source ~/crazyflie_ws/devel/setup.bash
 	sudo apt-get install dkms
 	```
-	Reference: http://wiki.ros.org/indigo/Installation/Ubuntu
+	Reference: http://wiki.ros.org/indigo/Installation/Ubuntu -->
 
 	Kinetic
 	```
@@ -114,7 +114,7 @@ ROS setup instructions:
 
 5) Optitrack library from optirx, python based ROS examples are here
 	
-	Indigo
+<!-- 	Indigo
 	```
 	cd ~/crazyflie_ws
 	sudo cp optirx.py /usr/lib/python3.4/  
@@ -123,7 +123,7 @@ ROS setup instructions:
 	echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
 	echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
 	source ~/.bashrc
-	```
+	``` -->
 
 	Kinetic
 	```
@@ -189,3 +189,4 @@ After you terminate the process, the data will be saved in `home/.ros/optitrack_
 
 Now you are all set!
 Have fun with your project! 
+
