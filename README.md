@@ -6,11 +6,7 @@ Last edited: 10/26/2018
 
 ## Note to ACSI 2018 Students!!
 
-I already set up the lab computer for instructor user! So you can try "Test the Environment" and
-"Connecting with Optitrack" right away. Skip "Setup Instructions" 
-That computer is there to serve as a reference. It is not answer to everything. It still lacks many things.
-It just provides the bare minimum of this project. So try to go through the steps on your own
-Ubuntu machine and see what you can do. 
+I already set up the lab computer for instructor user! So you can try "Test the Environment" and "Connecting with Optitrack" right away. Skip "Setup Instructions". However, that computer is there to serve as a reference. It is not answer to everything. It still lacks many things. It just provides the bare minimum of this project. This guide is just here to tell you what are needed and to provide big picture of things. In the end YOU have to integrate the systems on your own. 
 
 ## Synopsis
 
@@ -18,15 +14,9 @@ ROS environment capable of interfacing with Crazyflie 2.0 and OptiTrack motion c
 
 ### Requirements
 
-You will go through the following in Setup Instructions
-
-Ubuntu 16.04 with ROS Kinetic 
+Ubuntu 16.04 
 
 Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop-1604#4 
-
-ROS setup instructions: 
-
-- Kinetic: http://wiki.ros.org/indigo/Installation/Ubuntu
 
 ## Setup Instructions
 
