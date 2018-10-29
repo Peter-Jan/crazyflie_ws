@@ -39,26 +39,6 @@ Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-instal
 	However since some are out of date I will provide a step by step guide below
 
 3) Install ROS, update rosdep, source bash to use from terminal, and make crazyflie_ws
-	
-<!-- 	Indigo
-	```
-	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-	sudo apt-get update
-	sudo apt-get install ros-indigo-desktop-full
-	sudo rosdep init
-	rosdep update
-	source /opt/ros/indigo/setup.bash
-	sudo apt-get install python-rosinstall
-	cd crazyflie_ws
-	rosdep install --from-paths src --ignore-src --rosdistro=indigo -y
-	catkin_make
-	source ~/crazyflie_ws/devel/setup.bash
-	sudo apt-get install dkms
-	```
-	Reference: http://wiki.ros.org/indigo/Installation/Ubuntu -->
-
-	Kinetic
 	```
 	sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 	sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
@@ -74,7 +54,7 @@ Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-instal
 	source ~/crazyflie_ws/devel/setup.bash
 	sudo apt-get install dkms
 	```
-	http://wiki.ros.org/kinetic/Installation/Ubuntu
+	Reference: http://wiki.ros.org/kinetic/Installation/Ubuntu
 
 4) Driver for Linux xpad controllercd crazyflie_ws 
 	```
@@ -103,19 +83,6 @@ Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-instal
 	Reference: https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
 
 5) Optitrack library from optirx, python based ROS examples are here
-	
-<!-- 	Indigo
-	```
-	cd ~/crazyflie_ws
-	sudo cp optirx.py /usr/lib/python3.4/  
-	sudo cp optirx.py /usr/local/lib/python2.7/dist-packages/
-	sudo cp optirx.py /usr/local/lib/python2.7/site-packages/
-	echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc
-	echo "source ~/crazyflie_ws/devel/setup.bash" >> ~/.bashrc
-	source ~/.bashrc
-	``` -->
-
-	Kinetic
 	```
 	cd ~/crazyflie_ws
 	sudo cp optirx.py /usr/lib/python3.5/  
