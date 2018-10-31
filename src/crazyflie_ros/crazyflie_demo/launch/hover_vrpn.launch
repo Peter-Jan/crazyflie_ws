@@ -4,7 +4,7 @@
   <arg name="ip" default="vicon" />
   <arg name="port" default="3883" />
 
-  <arg name="uri" default="radio://0/90/2M" />
+  <arg name="uri" default="radio://0/80/250K" />
   <arg name="frame" default="crazyflie" />
   <arg name="x" default="0" />
   <arg name="y" default="0" />

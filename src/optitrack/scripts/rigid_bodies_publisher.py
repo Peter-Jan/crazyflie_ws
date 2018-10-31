@@ -40,7 +40,7 @@ class RigidBodiesPublisher(object):
     tf_listener = tf.TransformListener()
     tf_broadcaster = tf.TransformBroadcaster()
     # Connect to the optitrack system
-    iface = read_parameter('~iface', 'eth1')
+    iface = read_parameter('~iface', 'eth0')  #('~iface', 'eth1')
     version = (2, 7, 0, 0)  # the latest SDK version
     #IPython.embed()
     #optitrack = rx.mkdatasock(ip_address=get_ip_address(iface))
@@ -67,6 +67,8 @@ class RigidBodiesPublisher(object):
     # Track up to 24 rigid bodies
     prevtime = np.ones(24)*rospy.get_time()
     # IPython.embed()
+    rospy.loginfo('Successfully got transformation')
+
     while not rospy.is_shutdown():
       try:
         data = optitrack.recv(rx.MAX_PACKETSIZE)
@@ -77,6 +79,7 @@ class RigidBodiesPublisher(object):
         else:
           rospy.logwarn('Failed to receive packet from optitrack')
       msgtype, packet = rx.unpack(data, version=version)
+
       if type(packet) is rx.SenderData:
         version = packet.natnet_version
         rospy.loginfo('NatNet version received: ' + str(version))
@@ -120,17 +123,26 @@ class RigidBodiesPublisher(object):
         strX = str(array_msg.bodies[0].pose.position.x).decode('utf-8')
         strX = strX[2:-2]
         strY = str(array_msg.bodies[0].pose.position.y).decode('utf-8')
-        strY = strX[2:-2]
+        strY = strY[2:-2]
         strZ = str(array_msg.bodies[0].pose.position.z).decode('utf-8')
-        strZ = strX[2:-2]
+        strZ = strZ[2:-2]
         logFile.write(strX)
         logFile.write(", ")
         logFile.write(strY)
         logFile.write(", ")
         logFile.write(strZ)
-        logFile.write(", ")
+        logFile.write("\n")
         logFile.close()
         pose_pub.publish(array_msg)
+
+        try: 
+          fltX = float(strX)
+          fltY = float(strY)
+          fltZ = float(strZ)
+          rospy.loginfo("x: %.4lf | y: %.4lf | z: %.4lf" % (fltX, fltY, fltZ))
+        except:
+          rospy.logwarn('didn\'t read correctly')
+        
 
         logFile = open("optitrack_orientation","a")
         q1 = str(array_msg.bodies[0].pose.orientation.x).decode('utf-8')
@@ -148,7 +160,7 @@ class RigidBodiesPublisher(object):
         logFile.write(q3)
         logFile.write(", ")
         logFile.write(q4)
-        logFile.write(", ")
+        logFile.write("\n")
         logFile.close()
 
         pose_pub.publish(array_msg)

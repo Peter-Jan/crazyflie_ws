@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="uri" default="radio://0/70/2M" /> 
-  <!-- Group 2 -->
-  <!--arg name="uri" default="radio://0/80/2M" 
-      TA's: //0/70/2M  //0/80/250K -->
-  <arg name="joy_dev" default="/dev/input/js0" />
+  <arg name="uri" default="radio://0/80/2M" />
 
   <include file="$(find crazyflie_driver)/launch/crazyflie_server.launch">
   </include>
@@ -17,12 +13,7 @@
       <arg name="tf_prefix" value="crazyflie" />
       <arg name="enable_logging" value="True" />
     </include>
-    <node name="joy" pkg="joy" type="joy_node" output="screen" >
-      <param name="dev" value="$(arg joy_dev)" />
-    </node>
-    <include file="$(find crazyflie_demo)/launch/xbox360.launch">
-    </include>
-    <node name="crazyflie_demo_controller" pkg="crazyflie_demo" type="controller.py" output="screen">
+    <node name="crazyflie_demo_hover_controller" pkg="crazyflie_demo" type="controller_hover.py" output="screen">
     </node>
   </group>
 
