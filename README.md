@@ -101,6 +101,13 @@ Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-instal
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", ATTRS{idProduct}=="7777", MODE="0664", GROUP="plugdev"
 	SUBSYSTEM=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0664", GROUP="plugdev"
 	```
+	To do so, you will need write permission for this folder. The best way to go about it is from your terminal 
+	'''
+	cd /
+	cd etc/udev/rules.d/
+	sudo subl 99-crazyradio.rules
+	'''
+	Then write two lines of code and save it. 
 	Reference: https://github.com/bitcraze/crazyflie-lib-python#setting-udev-permissions
 
 5) Optitrack library from optirx, python based ROS examples are here
