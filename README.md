@@ -165,6 +165,8 @@ Reference: Section 3 of droneWriteUp.pdf
 
 ### Connecting with Optitrack
 
+0) Connect two computers with ethernet cable. Ubuntu machine that runs crazyflie and Windows machine that runs Optitrack. Check http://www.techiesparks.com/2013/05/14/how-to-configure-a-networking-switch/463 
+
 1) Turn on Motive on Optitrack computer and open one of the recent calibration 
 file in ACSI folder. 
 
