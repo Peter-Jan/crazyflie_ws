@@ -134,6 +134,24 @@ Ubuntu setup instructions: https://tutorials.ubuntu.com/tutorial/tutorial-instal
 	source ~/.bashrc
 	```
 
+6) Connect crazyflie Ubuntu computer with Optitrack Windows computer. 
+
+	We will connect two computer via ethernet cable and switch. The Optitrack computer is connected to switch which is then connected to 12 Optitrack cameras (11 for us because we only have 12 port switch). The switch is connected to another switch (because we only have 12 ports). We will connect Ubuntu machine and Windows machine with that switch. 
+	To do so, we need to change address of the two computers. 
+	
+	On Ubuntu
+	Right click Connections icon on right top of the screen. 
+	Edit Connections. 
+	Add New Connection
+	Set IPv4 settings to 
+	Address: 10.0.0.1 Gateway: 255.255.255.0 DNS Servers 10.0.0.10 
+
+	On Windows 
+	Go to Network Connections
+	Go to Properties 
+	Go to Properties of Internet Protocol Version 4
+	Address: 10.0.0.2 Gateway: 255.255.255.0 DNS Servers 10.0.0.10
+
 ### Test the environment
 
 "Hello World!" Let's fly the drone using Xbox controller. This would be a good way to check if everything is working fine. 
