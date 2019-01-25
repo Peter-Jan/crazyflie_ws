@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="uri" default="radio://0/70/2M" /> 
+  <arg name="uri" default="radio://0/80/250K" /> 
   <!-- Group 2 -->
   <!--arg name="uri" default="radio://0/80/2M" 
       TA's: //0/70/2M  //0/80/250K -->

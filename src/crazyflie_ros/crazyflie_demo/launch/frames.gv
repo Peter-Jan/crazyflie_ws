@@ -1,0 +1,8 @@
+digraph G {
+"optitrack" -> "rigid_body_1"[label="Broadcaster: /rigid_bodies_publisher\nAverage rate: 40.200 Hz\nMost recent transform: 1548454331.829 ( 0.021 sec old)\nBuffer length: 4.975 sec\n"];
+"world" -> "optitrack"[label="Broadcaster: /world_tf_publisher\nAverage rate: 99.126 Hz\nMost recent transform: 1548454331.850 ( 0.000 sec old)\nBuffer length: 4.984 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1548454331.850"[ shape=plaintext ] ;
+ }->"world";
+}
