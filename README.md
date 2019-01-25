@@ -186,7 +186,7 @@ Reference: Section 3 of droneWriteUp.pdf
 ### Connecting with Optitrack
 
 1) Turn on Motive on Optitrack computer and open one of the recent calibration 
-file in ACSI folder. 
+file in ACSI folder. If there isn't any calibration file check out https://www.youtube.com/watch?v=Chs6PuK4QRM&t=649s 
 
 2) Set your Crazyflie as a rigid body. The pose data of that rigid body will be sent to your computer. 
 
